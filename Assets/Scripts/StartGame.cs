@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class StartGame : MonoBehaviour
 	public Button notShowBtn;
 	public Button skipBtn;
 	public Image startPanel;
+
+	public string sceneName;
 
 	private void Awake()
 	{
@@ -28,10 +31,6 @@ public class StartGame : MonoBehaviour
 			SetShowTutorial(false);
 			EnterGame();
 		});
-		if (GameData.isMobile)
-		{ 
-			doubleBtn.gameObject.SetActive(false);
-		}
 	}
 	private void Update()
 	{
@@ -82,5 +81,9 @@ public class StartGame : MonoBehaviour
 	private void EnterGame()
 	{
 		Global.EnterGame();
+	}
+	public void changeScene()
+	{
+		SceneManager.LoadScene(sceneName);
 	}
 }
