@@ -22,11 +22,11 @@ public class YEnemyMoveTo : MonoBehaviour
     void Update()
     {
         // Vector3 point = curentPoint.position - transform.position;
-        Debug.Log("nhay vao dau" + rb.velocity);
+        //Debug.Log("nhay vao dau" + rb.velocity);
         if (curentPoint == pointC.transform)
         {
             rb.velocity = new Vector2(0, speed);
-            Debug.Log("nhay vao dau" + rb.velocity);
+            //Debug.Log("nhay vao dau" + rb.velocity);
         }
         else
         {

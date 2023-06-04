@@ -26,11 +26,11 @@ public class EnemyMoveTo : MonoBehaviour
     void Update()
     {
        // Vector3 point = curentPoint.position - transform.position;
-                 Debug.Log("nhay vao dau" + rb.velocity);
+                 //Debug.Log("nhay vao dau" + rb.velocity);
         if (curentPoint == pointB.transform)
         {
             rb.velocity = new Vector2(speed,0);
-            Debug.Log("nhay vao dau" + rb.velocity);
+            //Debug.Log("nhay vao dau" + rb.velocity);
         }
         else
         {

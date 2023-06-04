@@ -68,9 +68,10 @@ public class BulletController : MonoBehaviour
     }*/
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("brick"))
         {
-            Destroy(collision.gameObject);
+            Debug.Log("enemy");
+            Destroy(gameObject);
         }
     }
 }
