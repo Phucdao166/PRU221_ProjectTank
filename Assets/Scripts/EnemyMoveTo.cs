@@ -60,7 +60,7 @@ public class EnemyMoveTo : MonoBehaviour
         Gizmos.DrawSphere(pointB.transform.position, 0.5f);
         Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);  
     }
-    private IEnumerator EnemySpawn(float interval, GameObject enemy)
+/*    private IEnumerator EnemySpawn(float interval, GameObject enemy)
     {
 
         while (true)
@@ -73,6 +73,6 @@ public class EnemyMoveTo : MonoBehaviour
                 //StartCoroutine(EnemySpawn( interval, newEnemy));
             }
         }
-    }
+    }*/
    
 }
