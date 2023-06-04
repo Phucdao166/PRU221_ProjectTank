@@ -12,6 +12,8 @@ public class EnemyMoveTo : MonoBehaviour
     private Rigidbody2D rb;
     private Transform curentPoint;
     public float speed;
+    public GameObject game;
+    private static int enemyTankInstanceCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -58,4 +60,19 @@ public class EnemyMoveTo : MonoBehaviour
         Gizmos.DrawSphere(pointB.transform.position, 0.5f);
         Gizmos.DrawLine(pointA.transform.position, pointB.transform.position);  
     }
+    private IEnumerator EnemySpawn(float interval, GameObject enemy)
+    {
+
+        while (true)
+        {
+            yield return new WaitForSeconds(interval);
+            if (enemyTankInstanceCount < 5)
+            {
+                GameObject newEnemy = Instantiate(enemy, new Vector3(UnityEngine.Random.Range(-5f, 5), UnityEngine.Random.Range(-6f, 6f), 0), Quaternion.identity);
+                enemyTankInstanceCount++;
+                //StartCoroutine(EnemySpawn( interval, newEnemy));
+            }
+        }
+    }
+   
 }

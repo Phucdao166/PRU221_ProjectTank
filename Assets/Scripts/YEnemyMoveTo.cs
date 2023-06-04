@@ -9,6 +9,7 @@ public class YEnemyMoveTo : MonoBehaviour
     private Rigidbody2D rb;
     private Transform curentPoint;
     public float speed;
+    private static int enemyTankInstanceCount = 0;
     // Start is called before the first frame update
     void Start()
     {

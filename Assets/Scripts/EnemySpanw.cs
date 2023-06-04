@@ -24,7 +24,7 @@ public class EnemySpanw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = Vector2.Distance(transform.position,fwpalyer.transform.position);
+       /* distance = Vector2.Distance(transform.position,fwpalyer.transform.position);
         Vector2 direction = fwpalyer.transform.position - transform.position;
         direction.Normalize();
 
@@ -33,7 +33,7 @@ public class EnemySpanw : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(this.transform.position, fwpalyer.transform.position, speed * Time.deltaTime);
             //transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-        }
+        }*/
         
     }
     private IEnumerator EnemySpawn(float interval, GameObject enemy){
