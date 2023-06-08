@@ -6,30 +6,40 @@ public class MapSaver : MonoBehaviour
 {
 	public Button saveButton;
 	public Scene previousScene;
+	public GameObject[] sceneObjects;
+	public GameObject[] cloneObjects;
 
-	private void Start()
+	public void Start()
 	{
 		saveButton = GetComponent<Button>();
-		saveButton.onClick.AddListener(SaveScene);
+		saveButton.onClick.AddListener(SaveAndReturnToPreviousScene);
 	}
 
-	public void SaveScene()
+	public void SaveAndReturnToPreviousScene()
 	{
+		// Lưu scene hiện tại thành một bản sao
 		previousScene = SceneManager.GetActiveScene();
-
-		GameObject[] sceneObjects = previousScene.GetRootGameObjects();
-		GameObject[] cloneObjects = new GameObject[sceneObjects.Length];
+		sceneObjects = previousScene.GetRootGameObjects();
+		cloneObjects = new GameObject[sceneObjects.Length];
 		for (int i = 0; i < sceneObjects.Length; i++)
 		{
 			cloneObjects[i] = Instantiate(sceneObjects[i]);
 			DontDestroyOnLoad(cloneObjects[i]);
 		}
 
-		SceneManager.LoadScene("NewScene");
+		// Quay lại scene trước đó
+		SceneManager.LoadScene(previousScene.name);
+	}
 
-		for (int i = 0; i < cloneObjects.Length; i++)
+	public void OnDestroy()
+	{
+		// Hủy bỏ các đối tượng clone khi chuyển scene
+		if (cloneObjects != null)
 		{
-			Destroy(cloneObjects[i]);
+			for (int i = 0; i < cloneObjects.Length; i++)
+			{
+				//Destroy(cloneObjects[i]);
+			}
 		}
 	}
 }
