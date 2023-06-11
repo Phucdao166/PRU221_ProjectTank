@@ -67,6 +67,6 @@ namespace DefaultNamespace
             rigidBody2d.AddForce(force, ForceMode2D.Impulse);
             lastFire = Time.time;
         }
-       
+
     }
 }

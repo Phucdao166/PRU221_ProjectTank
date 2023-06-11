@@ -1,12 +1,13 @@
+using Assets.Scripts;
 using DefaultNamespace;
 using Entity;
-using Unity.VisualScripting;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class TankController : MonoBehaviour
+public class TankCreateMap : MonoBehaviour
 {
-    // Start is called before the first frame update
     private Tank _tank;
 
     public Sprite tankUp;
@@ -16,6 +17,10 @@ public class TankController : MonoBehaviour
     private TankMover _tankMover;
     private CameraController _cameraController;
     private SpriteRenderer _renderer;
+    private TankBuilder _tankBuilder;
+    public new GameObject camera;
+    public List<MaterialEnum> materialEnums;
+    private int currentIndex;
 
     private void Start()
     {
@@ -30,8 +35,15 @@ public class TankController : MonoBehaviour
         };
         gameObject.transform.position = _tank.Position;
         _tankMover = gameObject.GetComponent<TankMover>();
+        _cameraController = camera.GetComponent<CameraController>();
         _renderer = gameObject.GetComponent<SpriteRenderer>();
+        _tankBuilder = gameObject.GetComponent<TankBuilder>();
+        currentIndex = 0;
         Move(Direction.Down);
+        materialEnums.Add(MaterialEnum.Trees);
+        materialEnums.Add(MaterialEnum.Water);
+        materialEnums.Add(MaterialEnum.WallBrick);
+        materialEnums.Add(MaterialEnum.WallSteel);
     }
 
     // Update is called once per frame
@@ -53,16 +65,32 @@ public class TankController : MonoBehaviour
         {
             Move(Direction.Up);
         }
+        if (Input.GetKey(KeyCode.Alpha1) || Input.GetKey(KeyCode.Keypad1))
+        {
+            currentIndex = 0;
+        }
+        else if (Input.GetKey(KeyCode.Alpha2) || Input.GetKey(KeyCode.Keypad2))
+        {
+            currentIndex = 1;
+        }
+        else if (Input.GetKey(KeyCode.Alpha3) || Input.GetKey(KeyCode.Keypad3))
+        {
+            currentIndex = 2;
+        }
+        else if (Input.GetKey(KeyCode.Alpha4) || Input.GetKey(KeyCode.Keypad4))
+        {
+            currentIndex = 3;
+        }
 
         if (Input.GetKey(KeyCode.Space))
         {
-            Fire();
+            Build(materialEnums[currentIndex]);
         }
     }
 
     private void Move(Direction direction)
     {
-        _tank.Position = _tankMover.Move(direction);
+        _tank.Position = _tank.Position + _tankMover.Move(direction);
         _tank.Direction = direction;
         _renderer.sprite = direction switch
         {
@@ -84,5 +112,10 @@ public class TankController : MonoBehaviour
         };
         GetComponent<TankFirer>().Fire(b);
     }
+    private void Build(MaterialEnum materialEnum)
+    {
+        BuildingMaterial buildingMaterial = new(materialEnum);
 
+        _tankBuilder.Build(buildingMaterial);
+    }
 }
