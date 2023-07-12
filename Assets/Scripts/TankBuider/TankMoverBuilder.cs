@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using Entity;
 using UnityEngine;
 
-public class TankMoveCreateMap : MonoBehaviour
+public class TankMoverBuilder : MonoBehaviour
 {
+    // Start is called before the first frame update
+
+
     public float speed;
     private float lastMove = 0f;
     private float delay = 0.2f;
