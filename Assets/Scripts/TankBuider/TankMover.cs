@@ -27,16 +27,16 @@ public class TankMover : MonoBehaviour
         switch (direction)
         {
             case Direction.Down:
-                currentPos.y -= speed * Time.deltaTime;
+                currentPos.y -= speed*Time.deltaTime;
                 break;
             case Direction.Left:
-                currentPos.x -= speed * Time.deltaTime;
+                currentPos.x -= speed*Time.deltaTime;
                 break;
             case Direction.Right:
-                currentPos.x += speed * Time.deltaTime;
+                currentPos.x += speed*Time.deltaTime;
                 break;
             case Direction.Up:
-                currentPos.y += speed * Time.deltaTime;
+                currentPos.y += speed*Time.deltaTime;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(direction), direction, null);

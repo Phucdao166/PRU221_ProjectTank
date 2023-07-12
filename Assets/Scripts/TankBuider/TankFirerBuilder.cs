@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class TankFirer : MonoBehaviour
+    public class TankFirerBuilder : MonoBehaviour
     {
         public GameObject bulletPrefab;
         public Sprite spriteRight;
@@ -67,6 +67,6 @@ namespace DefaultNamespace
             rigidBody2d.AddForce(force, ForceMode2D.Impulse);
             lastFire = Time.time;
         }
-       
+
     }
 }

@@ -1,20 +1,21 @@
 using Assets.Scripts;
 using DefaultNamespace;
 using Entity;
-using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class TankCreateMap : MonoBehaviour
+public class TankControllerBuilder : MonoBehaviour
 {
+    // Start is called before the first frame update
     private Tank _tank;
 
     public Sprite tankUp;
     public Sprite tankDown;
     public Sprite tankLeft;
     public Sprite tankRight;
-    private TankMover _tankMover;
+    private TankMoverBuilder _tankMover;
     private CameraController _cameraController;
     private SpriteRenderer _renderer;
     private TankBuilder _tankBuilder;
@@ -34,7 +35,7 @@ public class TankCreateMap : MonoBehaviour
             Guid = GUID.Generate()
         };
         gameObject.transform.position = _tank.Position;
-        _tankMover = gameObject.GetComponent<TankMover>();
+        _tankMover = gameObject.GetComponent<TankMoverBuilder>();
         _cameraController = camera.GetComponent<CameraController>();
         _renderer = gameObject.GetComponent<SpriteRenderer>();
         _tankBuilder = gameObject.GetComponent<TankBuilder>();
@@ -90,7 +91,7 @@ public class TankCreateMap : MonoBehaviour
 
     private void Move(Direction direction)
     {
-        _tank.Position = _tank.Position + _tankMover.Move(direction);
+        _tank.Position = _tankMover.Move(direction);
         _tank.Direction = direction;
         _renderer.sprite = direction switch
         {
@@ -118,4 +119,5 @@ public class TankCreateMap : MonoBehaviour
 
         _tankBuilder.Build(buildingMaterial);
     }
+
 }
