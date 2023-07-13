@@ -23,4 +23,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map3.unity
     guid: 7b68a1470151b72499f322c5db172af9
+  - enabled: 1
+    path: Assets/Scenes/SelectMap2.unity
+    guid: 409cfc22a057f7546a85634ffb1a7a95
+  - enabled: 1
+    path: Assets/Scenes/Map1TwoPlayer.unity
+    guid: eead3a338d975074fb39e3c0260e8e7d
+  - enabled: 1
+    path: Assets/Scenes/Map2TwoPlayer.unity
+    guid: 78f1cd2854cfdc54081ff0eab4504a74
+  - enabled: 1
+    path: Assets/Scenes/Map3TwoPlayer.unity
+    guid: 7eba9def091fafb4f998908d8278a664
   m_configObjects: {}

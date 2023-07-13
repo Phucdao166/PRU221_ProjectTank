@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class TankController : MonoBehaviour
+public class TankController2 : MonoBehaviour
 {
     // Start is called before the first frame update
     private Tank _tank;
@@ -16,7 +16,7 @@ public class TankController : MonoBehaviour
     private TankMover _tankMover;
     private CameraController _cameraController;
     private SpriteRenderer _renderer;
-    
+
     private void Start()
     {
         _tank = new Tank
@@ -25,8 +25,8 @@ public class TankController : MonoBehaviour
             Direction = Direction.Down,
             Hp = 10,
             Point = 0,
-			Position = new Vector3(-6, -5, 0),
-			Guid = GUID.Generate()
+            Position = new Vector3(-6, -5, 0),
+            Guid = GUID.Generate()
         };
         gameObject.transform.position = _tank.Position;
         _tankMover = gameObject.GetComponent<TankMover>();
@@ -37,24 +37,24 @@ public class TankController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             Move(Direction.Left);
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.DownArrow))
         {
             Move(Direction.Down);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             Move(Direction.Right);
         }
-        else if (Input.GetKey(KeyCode.W))
+        else if (Input.GetKey(KeyCode.UpArrow))
         {
             Move(Direction.Up);
         }
 
-        if (Input.GetKey(KeyCode.J))
+        if (Input.GetKey(KeyCode.Space))
         {
             Fire();
         }
@@ -84,5 +84,5 @@ public class TankController : MonoBehaviour
         };
         GetComponent<TankFirer>().Fire(b);
     }
-    
+
 }
